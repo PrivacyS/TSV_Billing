@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import java.awt.Taskbar;
 public class Hoursheet_GUI {
 
-    public void Hoursheet_GUI() {
+    public Hoursheet_GUI() {
         // 1. Create the frame (the window)
         JFrame frame = new JFrame("My Empty Window");
 
