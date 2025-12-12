@@ -1,7 +1,16 @@
 plugins {
     id("java")
+    id("application") // Required to run JavaFX
+    id("org.openjfx.javafxplugin") version "0.1.0"// The standard JavaFX plugin
 }
-
+javafx {
+    version = "21"
+    modules("javafx.controls") // Adds the GUI components
+}
+application {
+    // CHANGE THIS to your package + class name
+    mainClass.set("org.Main.Main")
+}
 group = "org.example"
 version = "1.0-SNAPSHOT"
 

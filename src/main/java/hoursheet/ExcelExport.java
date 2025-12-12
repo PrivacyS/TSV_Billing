@@ -6,30 +6,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 public class ExcelExport {
     public void createExcel() {
-// 1. Create a Workbook (holds the entire Excel file)
-        // Use XSSFWorkbook for .xlsx files
         try (Workbook workbook = new XSSFWorkbook()) {
-
-            // 2. Create a Sheet
             Sheet sheet = workbook.createSheet("Employees");
-
-            // 3. Create a Header Row
             String[] columns = {"ID", "Name", "Department", "Salary"};
             Row headerRow = sheet.createRow(0);
-
-            // Create cells for the header
+            //header
             for (int i = 0; i < columns.length; i++) {
                 Cell cell = headerRow.createCell(i);
                 cell.setCellValue(columns[i]);
-
-                // Optional: Make header bold
                 CellStyle headerStyle = workbook.createCellStyle();
                 Font font = workbook.createFont();
                 font.setBold(true);
                 headerStyle.setFont(font);
                 cell.setCellStyle(headerStyle);
             }
-
             // 4. Create Data Rows
             Object[][] employeeData = {
                     {101, "Alice Smith", "Engineering", 85000},
