@@ -6,29 +6,42 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.scene.control.DatePicker;
+
+import java.time.LocalDate;
 
 public class Hoursheet_GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
+        VBox menuBox = new VBox();
+        menuBox.setSpacing(10);
+        Button uelBtn = new Button("Übungsleiterstunden abrechnen");
+        Button back = new Button("back");
+        Button trvlCostsBtn = new Button("Fahrtkosten abrechnen");
+        back.setOnAction(a -> {
+            primaryStage.getScene().setRoot(menuBox);
         });
 
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        uelBtn .setOnAction(e -> {
+            BillingFX billing = new BillingFX(back);
+            primaryStage.getScene().setRoot(billing.getRootPane());
+        });
 
-        Scene scene = new Scene(root, 300, 250);
+        trvlCostsBtn.setOnAction(e -> {
+            TravelFX travel = new TravelFX(back);
+            primaryStage.getScene().setRoot(travel.getRootPane());
+        });
 
-        primaryStage.setTitle("Hello World!");
+        menuBox.getChildren().addAll(uelBtn, trvlCostsBtn);
+
+        Scene scene = new Scene(menuBox, 1000, 1000);
+
+        primaryStage.setTitle("TSV Neuburg 1862");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
