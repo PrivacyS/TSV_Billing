@@ -1,20 +1,45 @@
 package org.Main;
 
-import GUI.Hoursheet_GUI;
+//import GUI.Hoursheet_GUI;
 
-import java.awt.*;// 2. IMPORTS the GUI class so we can use it
-import javax.swing.SwingUtilities;
-import javax.swing.*;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
-import static javafx.application.Application.launch;
 
-public class Main {
+
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+        Button btn = new Button();
+        btn.setText("Say 'Hello World'");
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Hello World!");
+            }
+        });
+
+        StackPane root = new StackPane();
+        root.getChildren().add(btn);
+
+        Scene scene = new Scene(root, 300, 250);
+
+        primaryStage.setTitle("Hello World!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
     public static void main(String[] args) {
 
         System.out.println("Program starting...");
-
-
         launch(args);
+
+
 
         System.out.println("GUI Launched!");
     }
