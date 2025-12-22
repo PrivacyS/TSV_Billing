@@ -8,7 +8,8 @@ public class ExcelExport {
     public void createExcel() {
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("Employees");
-            String[] columns = {"ID", "Name", "Department", "Salary"};
+            String[] columns = {"Date", "von", "bis", "Einheit 45 Minuten",
+                    "Einheit 60 Minuten", "Manschaft/Gruppe", "Anzahl Teilnehmer", "Sportstätte"};
             Row headerRow = sheet.createRow(0);
             //header
             for (int i = 0; i < columns.length; i++) {
